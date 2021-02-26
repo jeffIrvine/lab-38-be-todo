@@ -9,6 +9,10 @@ describe('lab-38-be-todo routes', () => {
     return pool.query(fs.readFileSync('./sql/setup.sql', 'utf-8'));
   });
 
+  afterAll(() => {
+    return pool.end();
+  });
+
   it('creates a todo with post', async() => {
     const res = await request(app)
       .post('/api/v1/todos')
